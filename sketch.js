@@ -38,7 +38,7 @@ function setup(){
     log6 = new Log(600,500,200,200, PI/2);
 
     bird = new Bird(125,500);
-    slingShot = new SlingShot(bird.body,log6.body);
+    slingShot = new SlingShot(bird.body,{x:125,y:300});
 }
 
 function draw(){
@@ -63,4 +63,11 @@ function draw(){
 
     bird.display();
     slingShot.display();
+}
+
+function mouseDragged(){
+    Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY})
+}
+function mouseReleased(){
+    slingShot.fly();
 }
