@@ -1,3 +1,11 @@
+var A1 = [1,2,3,4,5];
+console.log(A1);
+A1.push(6);
+console.log(A1);
+A1.pop();
+var A2 = [[1,2,3],[4,5,6],[7,8,9]]
+console.log(A2);
+console.log(A2[2][0]);
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
@@ -20,7 +28,7 @@ function setup(){
     world = engine.world;
 
     ground = new Ground(600,height,1200,20)
-    platform = new Ground(100,850,200,300);
+    platform = new Ground(200,850,400,300);
     box1 = new Box(700,920,70,70);
     box2 = new Box(920,920,70,70);
     pig1 = new Pig(810,950);
@@ -37,8 +45,8 @@ function setup(){
     log5 = new Log(870,720,150, -PI/7);
     log6 = new Log(600,500,200,200, PI/2);
 
-    bird = new Bird(125,520);
-    slingShot = new SlingShot(bird.body,{x:85,y:530});
+    bird = new Bird(245,520);
+    slingShot = new SlingShot(bird.body,{x:325,y:530});
 }
 
 function draw(){
