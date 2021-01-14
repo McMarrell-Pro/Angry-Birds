@@ -18,8 +18,7 @@ var log6;
 var slingShot;
 
 function preload(){
-bgImg = loadImage("sprites/bg.png");
-
+getBgImg();
 }
 
 function setup(){
@@ -50,7 +49,9 @@ function setup(){
 }
 
 function draw(){
+    if(bgImg){
     background(bgImg);
+    }
     Engine.update(engine);
     box1.display();
     box2.display();
@@ -84,4 +85,18 @@ function keyPressed(){
     if(keyCode == 32){
         slingShot.attach(bird.body)
     }
+}
+
+async function getBgImg(){
+    var response = await fetch("https://worldtimeapi.org/api/timezone/Asia/Kolkata")
+    var responseJson = await response.json();
+    var datetime = responseJson.datetime;
+    var hour = datetime.slice(11,13);
+    if(hour >= 06 && hour <= 15){
+        bg = "sprites/bg.png";
+    }
+    else{
+        bg = "sprites/bg2.jpg";
+    }
+    bgImg = loadImage(bg);
 }
