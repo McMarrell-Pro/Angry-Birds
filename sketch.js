@@ -16,6 +16,8 @@ var bgImg;
 var platform;
 var log6;
 var slingShot;
+var hit = 0;
+var bird2, bird3;
 
 function preload(){
 getBgImg();
@@ -46,6 +48,8 @@ function setup(){
 
     bird = new Bird(245,520);
     slingShot = new SlingShot(bird.body,{x:325,y:530});
+    bird2 = new Bird(210,530);
+    bird3 = new Bird(190,530);
 }
 
 function draw(){
@@ -72,6 +76,14 @@ function draw(){
 
     bird.display();
     slingShot.display();
+    bird2.display();
+    bird3.display();
+
+    pig1.Scoring();
+    pig2.Scoring();
+
+    text("Hits: " + hit, 900, 100);
+    
 }
 
 function mouseDragged(){
@@ -79,11 +91,12 @@ function mouseDragged(){
 }
 function mouseReleased(){
     slingShot.fly();
+    hit = hit + 1;
 }
 
 function keyPressed(){
     if(keyCode == 32){
-        slingShot.attach(bird.body)
+    slingShot.attach(bird.body);
     }
 }
 
